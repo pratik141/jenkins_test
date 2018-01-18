@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+__Author__ = "Pratik Anand"
+
+import cgi 
+print "Content-Type:application/octet-stream; name = \"cred.yml\"\r\n";
+import yamlcnv as yc
+
+form = cgi.FieldStorage() 
+env  = form.getvalue('env')
+prdl = form.getvalue('prdl')
+
+data = yc.getredentials(env,prdl)
+for k in data:
+	print k,"=", data.get(k)
